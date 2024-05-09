@@ -16,6 +16,7 @@ const initialState = {
   user: null
 };
 
+// auth.js to retrive the token value
 export default function(state = initialState, action) {
   const { type, payload } = action;
 
