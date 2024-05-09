@@ -196,14 +196,6 @@ class PostView(APIView):
             posts_data = PostSerializer(posts, many=True).data
             return Response(data=posts_data, status=status.HTTP_200_OK)
 
-    def post(self, request, *args, **kwargs):
-        serializer = PostSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user, name=request.user.name, avatar=request.user.avatar)
-            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     def delete(self, request, *args, **kwargs):
         post_id = kwargs.get('id')
         try:
